@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <h2 class="mb-4">
+            Search RAD
+        </h2>
+        {% if error %}
+
+        <div class="alert alert-danger">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+        <!-- Removed duplicate Search/Reset buttons outside the form -->
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <!-- Optional Upload -->
+
+            <div class="mb-4">
+
+                <label class="form-label">
+
+                    RAD Excel File (Optional)
+
+                </label>
+
+                <input type="file" class="form-control" name="rad_file" accept=".xlsx">
+
+                <div class="form-text">
+
+                    Leave empty to use the default RAD file.
+
+                </div>
+
+            </div>
+
+            <!-- Search Fields -->
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+
+                        Departure FIR
+
+                    </label>
+
+                    <input type="text" class="form-control" name="departure_fir" value="{{ departure_fir }}">
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+
+                        Arrival FIR
+
+                    </label>
+
+                    <input type="text" class="form-control" name="arrival_fir" value="{{ arrival_fir }}">
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+
+                        Entry Point
+
+                    </label>
+
+                    <input type="text" class="form-control" name="entry_point" value="{{ entry_point }}">
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+
+                        Exit Point
+
+                    </label>
+
+                    <input type="text" class="form-control" name="exit_point" value="{{ exit_point }}">
+
+                </div>
+
+            </div>
+
+            <!-- Search and Reset Button -->
+
+            <div class="text-center mb-4">
+
+                <button class="btn btn-success btn-lg" type="submit">
+
+                    Search
+
+                </button>
+
+                            <a href="/search" class="btn btn-secondary btn-lg">
+
+                Reset
+
+            </a>
+
+            </div>
+
+            {% if routes %}
+
+            <hr>
+
+            <h4>
+
+                {{ routes|length }} Matching Routes
+
+            </h4>
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Select</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Entry</th>
+                        <th>Exit</th>
+                        <th>Route</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for row in routes %}
+
+                    <tr>
+
+                        <td>
+
+                            <input type="radio" name="selected_route" value="{{ loop.index0 }}" {% if loop.first
+                                %}checked{% endif %}>
+
+                        </td>
+
+                        <td>{{ row["FIR/ADEP"] }}</td>
+
+                        <td>{{ row["FIR/ADES"] }}</td>
+
+                        <td>{{ row["Entery Point"] }}</td>
+
+                        <td>{{ row["Exit Point"] }}</td>
+
+                        <td style="max-width:450px; word-break:break-word;">
+
+                            {{ row["Routes"] }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            <div class="text-center">
+
+                <button type="submit" class="btn btn-primary btn-lg" name="action" value="expand">
+
+                    Expand Selected Route
+
+                </button>
+
+            </div>
+
+            {% endif %}
+
+        </form>
+
+        {% if expanded %}
+
+        <hr>
+
+        <h4>
+
+            Expanded Route
+
+        </h4>
+
+        <textarea class="form-control" rows="10" readonly>{{ expanded }}</textarea>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

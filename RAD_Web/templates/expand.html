@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <h2 class="text-center mb-4">
+            Expand Route
+        </h2>
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Route
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    name="route"
+                    placeholder="ULADA L768 OTILA"
+                    value="{{ route }}"
+                
+                >
+
+            </div>
+
+            <div class="text-center">
+
+                <button
+                    class="btn btn-primary btn-lg"
+                    type="submit">
+
+                    Expand Route
+
+                </button>
+
+            </div>
+
+        </form>
+
+        {% if expanded %}
+
+        <hr>
+
+        <h4>
+
+            Expanded Route
+
+        </h4>
+
+        <textarea
+            class="form-control"
+            rows="12"
+            readonly>{{ expanded }}</textarea>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
