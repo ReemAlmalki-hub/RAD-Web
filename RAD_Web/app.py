@@ -148,6 +148,7 @@ def expand_excel():
             uploaded_file,
             header=1
         )
+        print(df.columns.tolist())
 
         # Read validation file (optional)
         valid_points = None
