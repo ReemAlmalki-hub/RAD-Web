@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+
+    <h1 class="display-5 fw-bold">
+        RAD Route Expander
+    </h1>
+
+    <p class="lead text-muted">
+        Saudi Air Navigation Services
+    </p>
+
+</div>
+
+<div class="row g-4">
+
+    <!-- Search RAD -->
+    <div class="col-lg-4">
+
+        <a href="{{ url_for('search') }}" class="card-link">
+
+            <div class="card home-card h-100 shadow-sm">
+
+                <div class="card-body text-center p-4">
+
+                    <h3 class="mb-3 fw-bold" style="color: #0d3b66;">
+                        Search RAD
+                    </h3>
+
+                    <p class="text-muted small">
+                        Search the RAD Excel file using departure FIR,
+                        arrival FIR, entry point, and exit point.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- Expand Route -->
+    <div class="col-lg-4">
+
+        <a href="{{ url_for('expand') }}" class="card-link">
+
+            <div class="card home-card h-100 shadow-sm">
+
+                <div class="card-body text-center p-4">
+
+                    <h3 h3 class="mb-3 fw-bold" style="color: #0d3b66;">
+                        Expand Route
+                    </h3>
+
+                    <p class="text-muted small">
+                        Translate airport codes and expand airways
+                        into complete waypoint sequences.
+                    </p>
+
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- Expand Excel -->
+    <div class="col-lg-4">
+
+        <a href="{{ url_for('expand_excel') }}" class="card-link">
+
+            <div class="card home-card h-100 shadow-sm">
+
+                <div class="card-body text-center p-4">
+
+                    <h3 h3 class="mb-3 fw-bold" style="color: #0d3b66;">
+                        Expand Excel
+                    </h3>
+
+                    <p class="text-muted small">
+                        Process an entire RAD Excel file and generate
+                        an expanded and validated output Excel file.
+                    </p>
+
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

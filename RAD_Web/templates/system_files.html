@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow">
+
+            <div class="card-body p-5">
+
+                <h2 class="mb-3 text-center ">
+                    System Files
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Upload or replace the Dictionary Excel File and RAD Excel File
+                    file used by the system.
+                </p>
+
+                {% if message %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+                {% endif %}
+
+                {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+                {% endif %}
+
+                <form method="POST" enctype="multipart/form-data">
+
+                    <!-- Dictionary Excel File -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-semibold">
+
+                            Dictionary Excel File File
+
+                        </label>
+
+                        <input
+                            type="file"
+                            class="form-control"
+                            name="dictionary_file"
+                            accept=".xlsx"
+                            required>
+
+                        <div class="form-text">
+
+                            Excel File containing the
+                            <strong>Airways</strong>,
+                            <strong>Airports</strong>,
+                            and
+                            <strong>Validation</strong>
+                            sheets.
+
+                        </div>
+
+                    </div>
+
+                    <!-- RAD File -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-semibold">
+
+                            RAD Excel File File
+
+                        </label>
+
+                        <input
+                            type="file"
+                            class="form-control"
+                            name="rad_file"
+                            accept=".xlsx"
+                            required>
+
+                        <div class="form-text">
+
+                            This file becomes the system RAD database.
+
+                        </div>
+
+                    </div>
+
+                    <div class="alert alert-info">
+
+                        <ul class="mb-0 mt-2">
+                            <li>The system will reload the new files.</li>
+                            <li>All tools will use the updated files.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="text-center mt-4">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg px-5">
+
+                            Update System
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

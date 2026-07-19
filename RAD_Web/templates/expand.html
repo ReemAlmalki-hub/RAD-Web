@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-10">
+
+        <div class="card shadow">
+
+            <div class="card-body p-5">
+
+                <h2 class="mb-3">
+                    Route Expansion
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Enter a flight route to translate airport codes, expand airways,
+                    and generate the complete processed route.
+                </p>
+
+                <form method="POST">
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-semibold">
+
+                            Route
+
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control form-control-lg"
+                            name="route"
+                            placeholder="Example: JED L768 OTILA"
+                            value="{{ route }}"
+                            autocomplete="off"
+                            required>
+
+                    </div>
+
+                    <div class="text-center">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg px-5">
+
+                            Process Route
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+                {% if expanded %}
+
+                <hr class="my-5">
+
+                <div class="mb-4">
+
+                    <h4 class="mb-3">
+
+                        Original Route
+
+                    </h4>
+
+                    <textarea
+                        class="form-control"
+                        rows="3"
+                        readonly>{{ route }}</textarea>
+
+                </div>
+
+                <div>
+
+                    <h4 class="mb-3">
+
+                        Processed Route
+
+                    </h4>
+
+                    <textarea
+                        class="form-control"
+                        rows="8"
+                        readonly>{{ expanded }}</textarea>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
