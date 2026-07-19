@@ -1,3 +1,4 @@
+```html
 {% extends "base.html" %}
 
 {% block content %}
@@ -22,9 +23,7 @@
                 {% if error %}
 
                 <div class="alert alert-danger">
-
                     {{ error }}
-
                 </div>
 
                 {% endif %}
@@ -38,9 +37,7 @@
                         <div class="col-md-6 mb-4">
 
                             <label class="form-label fw-semibold">
-
                                 Departure FIR
-
                             </label>
 
                             <input
@@ -55,9 +52,7 @@
                         <div class="col-md-6 mb-4">
 
                             <label class="form-label fw-semibold">
-
                                 Arrival FIR
-
                             </label>
 
                             <input
@@ -72,9 +67,7 @@
                         <div class="col-md-6 mb-4">
 
                             <label class="form-label fw-semibold">
-
                                 Entry Point
-
                             </label>
 
                             <input
@@ -89,9 +82,7 @@
                         <div class="col-md-6 mb-4">
 
                             <label class="form-label fw-semibold">
-
                                 Exit Point
-
                             </label>
 
                             <input
@@ -161,6 +152,8 @@
                                     <th>Arrival</th>
                                     <th>Entry</th>
                                     <th>Exit</th>
+                                    <th>Availability</th>
+                                    <th>Remark</th>
                                     <th>Route</th>
 
                                 </tr>
@@ -173,11 +166,7 @@
 
                                 <tr>
 
-                                    <td>
-
-                                        {{ loop.index }}
-
-                                    </td>
+                                    <td>{{ loop.index }}</td>
 
                                     <td>
 
@@ -190,17 +179,22 @@
                                     </td>
 
                                     <td>{{ row["FIR/ADEP"] }}</td>
-
                                     <td>{{ row["FIR/ADES"] }}</td>
-
                                     <td>{{ row["Entery Point"] }}</td>
-
                                     <td>{{ row["Exit Point"] }}</td>
 
+                                    <td class="text-muted"
+                                        style="font-size:0.75rem; max-width:180px; white-space:normal;">
+                                        {{ row.get("Availability", "-") or "-" }}
+                                    </td>
+
+                                    <td class="text-muted"
+                                        style="font-size:0.75rem; max-width:220px; white-space:normal;">
+                                        {{ row.get("Remark", "-") or "-" }}
+                                    </td>
+
                                     <td style="min-width:450px;">
-
                                         {{ row["Routes"] }}
-
                                     </td>
 
                                 </tr>
@@ -272,3 +266,4 @@
 </div>
 
 {% endblock %}
+```
