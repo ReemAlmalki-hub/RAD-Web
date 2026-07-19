@@ -1,4 +1,4 @@
-```html
+
 {% extends "base.html" %}
 
 {% block content %}
@@ -152,9 +152,9 @@
                                     <th>Arrival</th>
                                     <th>Entry</th>
                                     <th>Exit</th>
+                                    <th>Route</th>
                                     <th>Availability</th>
                                     <th>Remark</th>
-                                    <th>Route</th>
 
                                 </tr>
 
@@ -183,6 +183,10 @@
                                     <td>{{ row["Entery Point"] }}</td>
                                     <td>{{ row["Exit Point"] }}</td>
 
+                                    <td style="min-width:450px;">
+                                        {{ row["Routes"] }}
+                                    </td>
+
                                     <td class="text-muted"
                                         style="font-size:0.75rem; max-width:180px; white-space:normal;">
                                         {{ row.get("Availability", "-") or "-" }}
@@ -191,10 +195,6 @@
                                     <td class="text-muted"
                                         style="font-size:0.75rem; max-width:220px; white-space:normal;">
                                         {{ row.get("Remark", "-") or "-" }}
-                                    </td>
-
-                                    <td style="min-width:450px;">
-                                        {{ row["Routes"] }}
                                     </td>
 
                                 </tr>
@@ -266,4 +266,4 @@
 </div>
 
 {% endblock %}
-```
+
